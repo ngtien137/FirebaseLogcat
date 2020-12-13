@@ -60,7 +60,7 @@ class LogEvent(
 ```
 * Enable logging feature (default is true)
 ```kotlin
-  FirebaseLogcat.enableLog(false)
+  FirebaseLogcat.enableLog(true)
 ```
 * Send Log by singleton class:
 ```kotlin
