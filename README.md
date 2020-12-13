@@ -24,7 +24,7 @@ allprojects {
 plugins {
   ...
   id 'com.google.gms.google-services'
-  //if you enalbe crashlytics
+  //enalbe crashlytics (if you want to use it)
   id 'com.google.firebase.crashlytics'
 }
 
@@ -39,4 +39,37 @@ dependencies {
   //crashlytics
   implementation 'com.google.firebase:firebase-crashlytics'
 }
+```
+## Components
+* FirebaseLogcat class
+This class has all features for logging event
+* LogEvent class
+This class containt data for logging
+```kotlin
+class LogEvent(
+  private var message: Any?, val tag: String = "DefaultEvent"
+) {
+
+  fun getMessage() = message?.toString() ?: "[null]"
+}
+```
+## Using
+* Initialize before using FirebaseLogcat class
+```kotlin 
+  FirebaseLogcat.initialize(context)
+```
+
+* Send Log by singleton class:
+```kotlin
+  var eventKey = "event_test"
+  var message = "my message"
+  var logEvent = LogEvent(message, "log_tag")
+  FirebaseLogcat.logEvent(eventKey, logEvent) //logEvent: LogEvent
+  //or
+  FirebaseLogcat.logEvent(eventKey, message) //message:Any?
+  // or using through extension functions
+  logEvent(eventKey, logEvent)
+  logEvent(eventKey, message)
+  
+  //if the tag is empty or you log without a tag, "DefaultTAG" will be generated
 ```
