@@ -58,7 +58,10 @@ class LogEvent(
 ```kotlin 
   FirebaseLogcat.initialize(context)
 ```
-
+* Enable logging feature (default is true)
+```kotlin
+  FirebaseLogcat.enableLog(false)
+```
 * Send Log by singleton class:
 ```kotlin
   var eventKey = "event_test"
