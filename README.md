@@ -1,1 +1,1 @@
-"# FirebaseLogcat" 
+# FirebaseLogcat
