@@ -1,22 +1,9 @@
 package com.lhd.demo.firebaselogcat.fb_logcat
 
-import android.app.Activity
-import android.content.Context
-
-fun Context.initFirebaseLogcat() {
-    firebaseLogcat = FirebaseLogcat(this)
+fun logEvent(eventKey: String, logEvent: LogEvent) {
+    FirebaseLogcat.logEvent(eventKey, logEvent)
 }
 
-private lateinit var firebaseLogcat: FirebaseLogcat
-
-fun Activity.logEvent(message: Any?) {
-    firebaseLogcat.logEvent(this::class.java.simpleName, message)
-}
-
-fun Activity.logEvent(tag: String, message: Any?) {
-    firebaseLogcat.logEvent(this::class.java.simpleName, LogEvent(message, tag))
-}
-
-fun logeEvent(eventKey: String, logEvent: LogEvent) {
-    firebaseLogcat.logEvent(eventKey, logEvent)
+fun logEvent(eventKey: String, message: Any?) {
+    FirebaseLogcat.logEvent(eventKey, message)
 }

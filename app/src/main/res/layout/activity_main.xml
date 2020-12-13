@@ -64,6 +64,15 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
+                    android:onClick="sendLogWithCustomEvent"
+                    android:text="@string/send_log_with_custom_event"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white" />
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
                     android:onClick="openFragment"
                     android:text="@string/open_fragment"
                     android:textAllCaps="false"

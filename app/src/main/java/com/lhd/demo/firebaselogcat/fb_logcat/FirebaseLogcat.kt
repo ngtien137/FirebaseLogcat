@@ -7,24 +7,33 @@ import com.google.firebase.analytics.ktx.logEvent
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.ktx.initialize
 
-class FirebaseLogcat(private val context: Context) {
+object FirebaseLogcat {
 
-    init {
-        Firebase.initialize(context)
-    }
+    private lateinit var context: Context
+    private var enableLog = true
 
     private val firebaseAnalytics: FirebaseAnalytics by lazy {
         FirebaseAnalytics.getInstance(context)
     }
 
+    fun initialize(context: Context) {
+        this.context = context
+        Firebase.initialize(context)
+    }
+
+    fun enableLog(enableLog: Boolean) {
+        this.enableLog = enableLog
+    }
     fun logEvent(eventKey: String, message: Any?) {
         val logeEvent = LogEvent(message)
         logEvent(eventKey, logeEvent)
     }
 
     fun logEvent(eventKey: String, logeEvent: LogEvent) {
-        firebaseAnalytics.logEvent(eventKey) {
-            param(logeEvent.tag, logeEvent.getMessage())
+        if (enableLog) {
+            firebaseAnalytics.logEvent(eventKey) {
+                param(logeEvent.tag, logeEvent.getMessage())
+            }
         }
     }
 

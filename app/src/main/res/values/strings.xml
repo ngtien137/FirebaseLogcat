@@ -4,4 +4,5 @@
     <string name="content">Content</string>
     <string name="send_log">Send log</string>
     <string name="open_fragment">Open Fragment</string>
+    <string name="send_log_with_custom_event">Send log with custom event</string>
 </resources>
